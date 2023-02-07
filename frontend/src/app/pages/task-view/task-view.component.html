@@ -1,0 +1,84 @@
+<div class="centered-content">
+    <div class="task-manager-container">
+
+        <div class="topbar">
+            <h1 class="title has-text-primary">
+                Search
+            </h1>
+
+            <div class="list-menu">
+
+                <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class="control">
+                        <div id="select" style="margin-block-end: 10px">
+                        <select formControlName="optionName">
+                            <option [ngValue]="null" disabled>Select dropdown</option>
+                            <option *ngFor="let option of options" [ngValue]="option">
+                                {{ option }}
+                            </option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="control">
+                        <input id="input" type="text" style="margin-block-end: 10px" 
+                        placeholder="Input" formControlName="input">
+                    </div>
+
+                    <div class="control">
+                        <button class="button is-primary" style="margin-block-end: 100px">
+                            Search
+                        </button>
+                    </div>
+                </form>
+
+                <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+
+                    <h1 class="title has-text-primary">
+                        Filter
+                    </h1>
+                    
+                    <div class="control">
+                        <div id="select" style="margin-block-end: 10px">
+                        <select formControlName="instrumentName">
+                            <option [ngValue]="null" disabled>Select dropdown</option>
+                            <option *ngFor="let instrument of instruments" [ngValue]="instrument">
+                                {{ instrument }}
+                            </option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="control">
+                        <button class="button is-primary" style="margin-block-end: 10px">
+                            Filter
+                        </button>
+                    </div>
+                    
+                </form>
+
+            </div>
+            
+        </div>
+     
+
+        <div class="output-container">
+            <h1 class="title has-text-primary">
+                Music
+            </h1>
+
+            <!-- Output Elements -->
+            <div class="output" *ngFor="let solos of solos">
+                <p>
+                    PML: {{ solos.pml }}
+                    <br>Title: {{ solos.title }}
+                    <br>Composer: {{ solos.composer }}
+                    <br>Grade: {{ solos.grade }}
+                    <br>Instrument: {{ solos.instrument }}
+                </p>
+            </div>                
+        </div>
+        
+    </div>
+</div>
